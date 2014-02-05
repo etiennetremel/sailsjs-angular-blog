@@ -2,13 +2,19 @@
 #### Blog using SailsJS API for the backend, AngularJS for the front-end and MongoDB for the database.
 
 ### Installation
-`git clone https://github.com/etiennetremel/sailsjs-angular-blog.git`
-`cd sailsjs-angular-blog`
-`npm install`
+```sh
+$ git clone https://github.com/etiennetremel/sailsjs-angular-blog.git`
+$ cd sailsjs-angular-blog
+$ npm install
+```
 
 Configure AWS `/config/aws.js` and MongoDB `/config/adapters.js`.
 
-`sails lift`
+
+```sh
+$ sails lift
+```
+
 Visit [http://localhost:1337/](http://localhost:1337/)
 
 ### Features
