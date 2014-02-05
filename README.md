@@ -1,7 +1,17 @@
 # SailsJS Blog
 #### Blog using SailsJS API for the backend, AngularJS for the front-end and MongoDB for the database.
 
-### Features:
+### Installation
+`git clone https://github.com/etiennetremel/sailsjs-angular-blog.git`
+`cd sailsjs-angular-blog`
+`npm install`
+
+Configure AWS `/config/aws.js` and MongoDB `/config/adapters.js`.
+
+`sails lift`
+Visit [http://localhost:1337/](http://localhost:1337/)
+
+### Features
 * Authentification using Passport
 * Write post content with Markdown
 * Multiple Image uploader via Amazon AWS
@@ -21,7 +31,7 @@ Admin user is automatically created via `/config/bootstrap.js`. Default username
 `/config/404.js` has been modified to redirect all requested page to layout.ejs with a 200 status.
 
 
-### Next to do:
+### Next to do
 * Comment system
 * User registration
 * ... and much more
