@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en" ng-app="blogApp">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <title>Blog App</title>
+
+  <!--STYLES-->
+  <link rel="stylesheet" href="/linker/styles/medium-editor-insert-plugin.css">
+  <link rel="stylesheet" href="/linker/styles/medium-editor.css">
+  <link rel="stylesheet" href="/linker/styles/ng-tags-input.css">
+  <link rel="stylesheet" href="/linker/styles/semantic.min.css">
+  <link rel="stylesheet" href="/linker/styles/style.css">
+  <!--STYLES END-->
+
+</head>
+<body ng-cloak>
+
+  <!-- Main navigation -->
+  <div id="main-menu" class="ui icon buttons" ng-controller="NavController">
+    <a href="/" class="ui primary button"><i class="home icon"></i></a>
+    <a ng-show="isAuthenticated" href="/post/create" class="ui primary button"><i class="file icon"></i></a>
+    <div class="ui primary button search-form" ng-class="{ open: searchForm }">
+      <form class="ui fluid form" role="form" action="/search" ng-show="searchForm">
+        <div class="inline fields">
+          <div class="field">
+            <input type="text" id="search-input" name="q" placeholder="Search for...">
+          </div>
+          <i class="close icon" ng-click="toggleSearchForm()"></i>
+        </div>
+      </form>
+      <i class="search icon" ng-click="toggleSearchForm()" ng-hide="searchForm"></i>
+    </div>
+    <div ng-hide="isAuthenticated" class="ui primary button" show-modal="#modal-login"><i class="lock icon"></i></div>
+    <div ng-show="isAuthenticated" ng-click="logout()" class="ui primary button"><i class="unlock icon"></i></div>
+
+    <!-- Login modal -->
+    <div class="ui modal small" id="modal-login" ng-controller="AuthController" auth>
+      <i class="close icon"></i>
+      <div class="header">
+        Login
+      </div>
+      <div class="content">
+        <div class="ui form segment">
+          <div class="field">
+            <label>Username</label>
+            <div class="ui left labeled icon input">
+              <input type="text" ng-model="username" placeholder="Username">
+              <i class="user icon"></i>
+              <div class="ui corner label">
+                <i class="icon asterisk"></i>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <div class="ui left labeled icon input">
+              <input type="password" ng-model="password" placeholder="Password">
+              <i class="lock icon"></i>
+              <div class="ui corner label">
+                <i class="icon asterisk"></i>
+              </div>
+            </div>
+          </div>
+          <div class="ui red message" ng-class="{ error: !errorMessage }">
+            {{ errorMessage }}
+          </div>
+        </div>
+      </div>
+      <div class="actions">
+        <div class="ui button cancel">Cancel</div>
+        <div class="ui blue button positive">Login</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <h2 class="ui huge center aligned icon header">
+    <i class="circular emphasized inverted teal book outline icon"></i>
+    <div class="content">
+      Read Me
+      <div class="sub header">Welcome! Please find below some fantastic posts.</div>
+    </div>
+  </h2>
+
+  <!-- Main view -->
+  <div class="ui page grid">
+    <div class="ui column" ng-view></div>
+  </div>
+
+  <!-- Growl notification system -->
+  <div growl></div>
+
+  <!--SCRIPTS-->
+  <script src="/linker/js/lib/jquery-1.11.0.min.js"></script>
+  <script src="/linker/js/lib/semantic.min.js"></script>
+  <script src="/linker/js/lib/showdown.js"></script>
+  <script src="/linker/js/lib/jquery.truncate.js"></script>
+  <script src="/linker/js/lib/moment.min.js"></script>
+  <script src="/linker/js/lib/angular/angular.min.js"></script>
+  <script src="/linker/js/lib/angular/angular-route.min.js"></script>
+  <script src="/linker/js/lib/angular/angular-resource.min.js"></script>
+  <script src="/linker/js/lib/angular/angular-cookies.min.js"></script>
+  <script src="/linker/js/lib/angular/angular-sanitize.min.js"></script>
+  <script src="/linker/js/lib/angular/angular-growl.js"></script>
+  <script src="/linker/js/lib/angular/ng-tags-input.js"></script>
+  <script src="/linker/js/app/app.js"></script>
+  <script src="/linker/js/app/services.js"></script>
+  <script src="/linker/js/app/controllers.js"></script>
+  <script src="/linker/js/app/filters.js"></script>
+  <script src="/linker/js/app/directives.js"></script>
+  <!--SCRIPTS END-->
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<div class="ui segment" ng-hide="post">
+  <h2 class="ui header">
+    <i class="attention icon"></i>
+    <div class="content">
+      Woops!
+      <div class="sub header">No posts found.</div>
+    </div>
+  </h2>
+</div>
+
+<div class="ui segment" ng-show="post">
+  <h1 class="ui header">{{ post.title }}</h1>
+
+  <div class="ui attached label top right">
+    Posted {{ post.createdAt | timeago }}
+  </div>
+
+  <markdown ng-model="post.content"></markdown>
+
+  <div class="ui grid two column">
+    <div class="bottom aligned row">
+      <div class="column">
+        <div class="ui label" ng-repeat="tag in post.tags"><i class="tag icon"></i> {{ tag }}</div>
+        <div class="ui label" ng-repeat="category in post.categories"><i class="archive icon"></i> {{ category }}</div>
+      </div>
+      <div class="column right aligned">
+        <div ng-show="isAuthenticated" class="ui icon buttons">
+          <a href="/post/update/{{ post.id }}" class="ui small black button"><i class="icon pencil"></i></a>
+          <div ng-click="destroyPost()" class="ui small black button"><i class="icon trash"></i></div>
+        </div>
+        <a href="/{{ post.slug }}/{{ post.id }}" class="ui small primary button">Read more <i class="ui primary arrow right"></i></a>
+      </div>
+    </div>
+  </div>
+</div>

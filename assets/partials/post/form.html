@@ -1,0 +1,49 @@
+<div class="ui header">
+  <i class="pencil icon"></i>
+  <div class="content">
+    {{ pageTitle }}
+    <div class="sub header">Write your post using Markdown.</div>
+  </div>
+</div>
+
+<form id="post-form" name="postForm" class="ui form" role="form" ng-submit="submit()">
+
+  <div class="field" ng-class="{ 'error' : postForm.title.$invalid && !postForm.title.$pristine }">
+    <label for="input-title">Title</label>
+    <input type="text" id="input-title" name="title" ng-model="post.title" placeholder="Post title..." required />
+  </div>
+  <div class="field">
+    <label for="input-slug">Slug (optional)</label>
+    <input type="text" id="input-slug" name="slug" ng-model="post.slug" placeholder="post-title" />
+  </div>
+  <div class="field" ng-class="{ 'error' : postForm.content.$invalid && !postForm.content.$pristine }">
+    <label for="post-content">Content (use <a href="http://en.wikipedia.org/wiki/Markdown" target="_blank">Markdown</a>, preview will appear further down)</label>
+    <div class="post-content-editor" post-editor>
+      <div class="upload-button ui blue mini button floated right">
+        <i class="icon upload disk"></i>
+        <input type="file" class="upload-field" multiple />
+      </div>
+      <div class="ui dimmer">
+        <div class="ui loader"></div>
+      </div>
+      <textarea class="ui attached" id="post-content" name="content" ng-model="post.content" required></textarea>
+    </div>
+  </div>
+  <div class="field">
+    <label for="post-preview">Preview</label>
+    <div class="ui segment">
+      <markdown id="post-preview" ng-model="post.content"></markdown>
+    </div>
+  </div>
+  <div class="field">
+    <label for="input-tags">Tags</label>
+    <tags-input ng-model="post.tags" id="input-tags" class="input-tags" replaceSpacesWithDashes="true"></tags-input>
+  </div>
+  <div class="field">
+    <label for="input-categories">Categories</label>
+    <tags-input ng-model="post.categories" id="input-categories" class="input-categories" placeholder="Add a category" replaceSpacesWithDashes="true" addOnEnter="true"></tags-input>
+  </div>
+
+
+  <button type="submit" class="ui blue submit button">{{ buttonLabel }}</button>
+</form>
