@@ -58,9 +58,9 @@ module.exports = function (grunt) {
 
     'linker/js/app/app.js',
     'linker/js/app/services.js',
-    'linker/js/app/controllers.js',
     'linker/js/app/filters.js',
-    'linker/js/app/directives.js'
+    'linker/js/app/directives.js',
+    'linker/js/app/controllers.js'
 
     // // Below, as a demonstration, you'll see the built-in dependencies
     // // linked in the proper order order
