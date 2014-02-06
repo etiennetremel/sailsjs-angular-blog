@@ -43,6 +43,6 @@ module.exports.adapters = {
       port     : 27017,
       user     : '',
       password : '',
-      database : 'blog'
+      database : 'sailsjs-angular-blog'
   }
 };
