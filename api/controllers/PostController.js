@@ -6,7 +6,7 @@ var PostController = {
 
   index: function (req,res) {
     var page = req.param('page') || 1,
-        postsPerPage = 2;
+        postsPerPage = 10;
 
     Post.find().done(function (err, posts) {
       if (err) return res.send(err, 500);
