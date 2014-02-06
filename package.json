@@ -1,7 +1,7 @@
 {
     "name": "sails-angular-blog",
     "private": true,
-    "version": "0.0.1",
+    "version": "0.1.1",
     "description": "Blog built with SailsJS, Angular and Mongo DB",
     "dependencies": {
         "sails": "0.9.8",
@@ -14,8 +14,6 @@
         "passport": "0.2.0",
         "passport-local": "0.1.6",
         "markdown": "0.5.0",
-        "moment": "2.5.1",
-        "html-truncate": "1.0.3",
         "aws-sdk": "2.0.0-rc9"
     },
     "scripts": {
