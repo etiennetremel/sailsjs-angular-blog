@@ -4,8 +4,6 @@
 
 var Post = {
 
-  adapter: 'mongo',
-
   attributes: {
     title: {
       type: 'string',

@@ -6,8 +6,6 @@ var bcrypt = require('bcrypt');
 
 var User = {
 
-  adapter: 'mongo',
-
   attributes: {
     uid: {
       type: 'integer',
