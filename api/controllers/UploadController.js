@@ -27,7 +27,7 @@ var UploadController = {
     // Store image into aws bucket
     s3.putObject(params, function(err, data) {
       if (err) {
-        res.json({}, 400);
+        res.json(err, 400);
       } else {
         // Return link to the image
         res.json({
