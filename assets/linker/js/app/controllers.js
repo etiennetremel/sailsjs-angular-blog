@@ -15,7 +15,7 @@ angular.module('blogApp.controllers', [])
     $scope.logout = function () {
       Auth.logout().then(function (res) {
         $rootScope.isAuthenticated = false;
-        growl.addSuccessMessage('You have been logged out.');
+        growl.addInfoMessage('You have been logged out.');
       });
     };
   }])
