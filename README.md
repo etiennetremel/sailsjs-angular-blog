@@ -31,8 +31,36 @@ Visit [http://localhost:1337/](http://localhost:1337/)
 * Notification system (Growl)
 * Semantic UI framework
 
+
 ### Amazon Web Service Credentials
 Amazon is used as a storage system for any images you woule like to add to a post. You have to define the credential in the configuration file located in the following folder `/config/aws.js`
+
+
+### Configure SailsJS to work locally
+As SailsJS allow to configure a local environment, you should create a `/config/local.js` file which should include any settings specifically for your development computer such as:
+
+```javascript
+aws: {
+  accessKeyId: 'access key to be defined here',
+  secretAccessKey: 'secret access key to be defined here',
+  region: 'us-west-2',
+  bucket: 'my-bucket-name',
+  endPoint: 's3.amazonaws.com'
+},
+
+adapters: {
+  'default': 'mongo',
+
+  mongo: {
+    module   : 'sails-mongo',
+    host     : 'localhost',
+    port     : 27017,
+    user     : '',
+    password : '',
+    database : 'sailsjs-angular-blog'
+  }
+}
+```
 
 ### Specific customisation
 
