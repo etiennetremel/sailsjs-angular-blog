@@ -26,5 +26,5 @@ module.exports.routes = {
   'delete /api/post/:id'                : 'PostController.destroy',
 
   // Upload
-  'post /api/upload/'                   : 'UploadController'
+  'post /api/upload'                    : 'UploadController.index'
 };
