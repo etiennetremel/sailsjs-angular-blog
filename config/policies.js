@@ -19,11 +19,14 @@ module.exports.policies = {
 
   '*': true,
 
-  // 'post': {
-  // 	'create': ['isAuthenticated'],
-  // 	'update': ['isAuthenticated'],
-  // 	'destroy': ['isAuthenticated'],
-  // }
+  'post': {
+  	'create':  'isAuthenticated',
+  	'update':  'isAuthenticated',
+  	'destroy': 'isAuthenticated'
+  },
+  'upload': {
+    'index':   'isAuthenticated'
+  }
 
   /*
 	// Here's an example of adding some policies to a controller

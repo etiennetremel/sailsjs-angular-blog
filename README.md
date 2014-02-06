@@ -17,6 +17,10 @@ $ sails lift
 
 Visit [http://localhost:1337/](http://localhost:1337/)
 
+**Admin access:**
+* Username: `admin`
+* Password: `admin`
+
 ### Features
 * Authentification using Passport
 * Write post content with Markdown

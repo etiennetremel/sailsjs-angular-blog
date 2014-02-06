@@ -14,17 +14,17 @@ module.exports.routes = {
   '/'                                   : 'views/layout.ejs',
 
   // Auth
-  'post /api/login'                     : 'api/AuthController.login',
-  'get /api/logout'                     : 'api/AuthController.logout',
+  'post /api/login'                     : 'AuthController.login',
+  'get /api/logout'                     : 'AuthController.logout',
 
   // Posts
-  'get /api/posts/:page?'               : 'api/PostController.index',
-  'get /api/posts/search/:query/:page?' : 'api/PostController.search',
-  'get /api/post/:id?'                  : 'api/PostController.show',
-  'post /api/post'                      : 'api/PostController.create',
-  'put /api/post/:id'                   : 'api/PostController.update',
-  'delete /api/post/:id'                : 'api/PostController.destroy',
+  'get /api/posts/:page?'               : 'PostController.index',
+  'get /api/posts/search/:query/:page?' : 'PostController.search',
+  'get /api/post/:id?'                  : 'PostController.show',
+  'post /api/post'                      : 'PostController.create',
+  'put /api/post/:id'                   : 'PostController.update',
+  'delete /api/post/:id'                : 'PostController.destroy',
 
   // Upload
-  'post /api/upload/'                   : 'api/UploadController'
+  'post /api/upload/'                   : 'UploadController'
 };
