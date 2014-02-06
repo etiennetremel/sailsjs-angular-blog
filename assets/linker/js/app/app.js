@@ -90,7 +90,7 @@ angular.module('blogApp', [
         needAuthentication: true,
         resolve: resolve
       })
-      .when('/search', {
+      .when('/search/:query', {
         templateUrl: '/partials/post/index.html',
         controller: 'SearchCtrl',
         // needAuthentication: false,

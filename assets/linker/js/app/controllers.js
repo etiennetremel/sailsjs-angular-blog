@@ -7,11 +7,9 @@
 
 angular.module('blogApp.controllers', [])
 
-  .controller('NavController', ['$scope', '$rootScope', 'growl', 'Auth', function ($scope, $rootScope, growl, Auth) {
-    $scope.searchForm = false;
-
-    $scope.toggleSearchForm = function () {
-      $scope.searchForm = !$scope.searchForm;
+  .controller('NavController', ['$scope', '$rootScope', '$location', 'growl', 'Auth', function ($scope, $rootScope, $location, growl, Auth) {
+    $scope.search = function () {
+      $location.path('/search/' + $scope.searchQuery);
     };
 
     $scope.logout = function () {
@@ -63,7 +61,7 @@ angular.module('blogApp.controllers', [])
 
   .controller('SearchCtrl', ['$scope', '$routeParams', 'growl', 'Post', function ($scope, $routeParams, growl, Post) {
     var page = $routeParams.page || 1,
-        query = $routeParams.q || '';
+        query = $routeParams.query || '';
 
     $scope.pageTitle = 'Search for `' + query + '`';
     $scope.paginateLink = 'search/';
