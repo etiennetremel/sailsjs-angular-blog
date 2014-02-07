@@ -30,7 +30,7 @@
       </h2>
 
       <!-- Main navigation -->
-      <div class="ui secondary pointing menu" ng-controller="NavController">
+      <div class="ui secondary pointing menu" ng-controller="NavCtrl">
         <a class="item" href="/">
           <i class="home icon"></i> Home
         </a>
@@ -62,7 +62,7 @@
   <div growl></div>
 
   <!-- Login modal -->
-  <div class="ui modal small" id="modal-login" ng-controller="AuthController" auth>
+  <div class="ui modal small" id="modal-login" ng-controller="AuthCtrl" auth>
     <i class="close icon"></i>
     <div class="header">
       Login
@@ -117,6 +117,11 @@
   <script src="/linker/js/app/services.js"></script>
   <script src="/linker/js/app/filters.js"></script>
   <script src="/linker/js/app/directives.js"></script>
+  <script src="/linker/js/app/controllers/AuthCtrl.js"></script>
+  <script src="/linker/js/app/controllers/NavCtrl.js"></script>
+  <script src="/linker/js/app/controllers/PostIndexCtrl.js"></script>
+  <script src="/linker/js/app/controllers/PostShowCtrl.js"></script>
+  <script src="/linker/js/app/controllers/PostEditCtrl.js"></script>
   <script src="/linker/js/app/controllers.js"></script>
   <!--SCRIPTS END-->
 

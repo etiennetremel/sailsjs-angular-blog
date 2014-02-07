@@ -7,108 +7,119 @@
 
 angular.module('blogApp.services', ['ngResource'])
 
-  .factory('Post', ['$http', '$q', 'Globals', function ($http, $q, Globals) {
-    return {
-
-      // Get post by id
-      find: function (postId) {
-        var defer = $q.defer();
-        $http({
-            method: 'GET',
-            url: Globals.apiUrl + 'post/' + postId
-          })
-          .success(function (data, status, headers, config) {
-            defer.resolve(data);
-          })
-          .error(function (data, status, headers, config) {
-            defer.reject(status);
-          });
-        return defer.promise;
-      },
-
-      // Get all posts
-      findAll: function (page) {
-        var defer = $q.defer();
-        $http({
-            method: 'GET',
-            url: Globals.apiUrl + 'posts/' + page
-          })
-          .success(function (data, status, headers, config) {
-            defer.resolve(data);
-          })
-          .error(function (data, status, headers, config) {
-            defer.reject(status);
-          });
-        return defer.promise;
-      },
-
-      // Search for posts
-      search: function (query, page) {
-        var defer = $q.defer();
-        $http({
-            method: 'GET',
-            url: Globals.apiUrl + 'posts/search/' + query + '/' + page
-          })
-          .success(function (data, status, headers, config) {
-            defer.resolve(data);
-          })
-          .error(function (data, status, headers, config) {
-            defer.reject(status);
-          });
-        return defer.promise;
-      },
-
-      // Create post
-      create: function (post) {
-        var defer = $q.defer();
-        $http({
-            method: 'POST',
-            url: Globals.apiUrl  + 'post',
-            data: post
-          })
-          .success(function (data, status, headers, config) {
-            defer.resolve(data);
-          })
-          .error(function (data, status, headers, config) {
-            defer.reject(status);
-          });
-        return defer.promise;
-      },
-
-      // Update post
-      update: function (post) {
-        var defer = $q.defer();
-        $http({
-            method: 'PUT',
-            url: Globals.apiUrl + 'post/' +  post.id,
-            data: post
-          })
-          .success(function (data, status, headers, config) {
-            defer.resolve(data);
-          })
-          .error(function (data, status, headers, config) {
-            defer.reject(status);
-          });
-        return defer.promise;
-      },
-
-      // Delete post
-      destroy: function (id) {
-        var defer = $q.defer();
-        $http({
-            method: 'DELETE',
-            url: Globals.apiUrl + 'post/' + id
-          })
-          .success(function (data, status, headers, config) {
-            defer.resolve(data);
-          })
-          .error(function (data, status, headers, config) {
-            defer.reject(status);
-          });
-        return defer.promise;
-      }
-    };
+  .factory('Post', ['$resource', 'Globals', function ($resource, Globals) {
+    return $resource(Globals.apiPrefix + '/posts/:id', { id: "@_id" }, {
+      'create':  { method: 'POST' },
+      'index':   { method: 'GET', params: { page: 'page' } },
+      'show':    { method: 'GET' },
+      'update':  { method: 'PUT' },
+      'destroy': { method: 'DELETE' },
+      'search':  { method: 'GET', action: 'search', params: { query: 'query', page: 'page' } }
+    });
   }])
+
+  // .factory('Post', ['$http', '$q', 'Globals', function ($http, $q, Globals) {
+  //   return {
+
+  //     // Get post by id
+  //     find: function (postId) {
+  //       var defer = $q.defer();
+  //       $http({
+  //           method: 'GET',
+  //           url: Globals.apiUrl + 'post/' + postId
+  //         })
+  //         .success(function (data, status, headers, config) {
+  //           defer.resolve(data);
+  //         })
+  //         .error(function (data, status, headers, config) {
+  //           defer.reject(status);
+  //         });
+  //       return defer.promise;
+  //     },
+
+  //     // Get all posts
+  //     findAll: function (page) {
+  //       var defer = $q.defer();
+  //       $http({
+  //           method: 'GET',
+  //           url: Globals.apiUrl + 'posts/' + page
+  //         })
+  //         .success(function (data, status, headers, config) {
+  //           defer.resolve(data);
+  //         })
+  //         .error(function (data, status, headers, config) {
+  //           defer.reject(status);
+  //         });
+  //       return defer.promise;
+  //     },
+
+  //     // Search for posts
+  //     search: function (query, page) {
+  //       var defer = $q.defer();
+  //       $http({
+  //           method: 'GET',
+  //           url: Globals.apiUrl + 'posts/search/' + query + '/' + page
+  //         })
+  //         .success(function (data, status, headers, config) {
+  //           defer.resolve(data);
+  //         })
+  //         .error(function (data, status, headers, config) {
+  //           defer.reject(status);
+  //         });
+  //       return defer.promise;
+  //     },
+
+  //     // Create post
+  //     create: function (post) {
+  //       var defer = $q.defer();
+  //       $http({
+  //           method: 'POST',
+  //           url: Globals.apiUrl  + 'post',
+  //           data: post
+  //         })
+  //         .success(function (data, status, headers, config) {
+  //           defer.resolve(data);
+  //         })
+  //         .error(function (data, status, headers, config) {
+  //           defer.reject(status);
+  //         });
+  //       return defer.promise;
+  //     },
+
+  //     // Update post
+  //     update: function (post) {
+  //       var defer = $q.defer();
+  //       $http({
+  //           method: 'PUT',
+  //           url: Globals.apiUrl + 'post/' +  post.id,
+  //           data: post
+  //         })
+  //         .success(function (data, status, headers, config) {
+  //           defer.resolve(data);
+  //         })
+  //         .error(function (data, status, headers, config) {
+  //           defer.reject(status);
+  //         });
+  //       return defer.promise;
+  //     },
+
+  //     // Delete post
+  //     destroy: function (id) {
+  //       var defer = $q.defer();
+  //       $http({
+  //           method: 'DELETE',
+  //           url: Globals.apiUrl + 'post/' + id
+  //         })
+  //         .success(function (data, status, headers, config) {
+  //           defer.resolve(data);
+  //         })
+  //         .error(function (data, status, headers, config) {
+  //           defer.reject(status);
+  //         });
+  //       return defer.promise;
+  //     }
+  //   };
+  // }])
 
   .factory('$fileUpload', ['$http', '$q', 'Globals', function ($http, $q, Globals) {
     var acceptedTypes = ['image/png', 'image/jpeg', 'image/gif'];
@@ -125,7 +136,7 @@ angular.module('blogApp.services', ['ngResource'])
         if (acceptedTypes.indexOf(file.type) > 0) {
           $http({
             method: 'POST',
-            url: Globals.apiUrl + 'upload',
+            url: Globals.apiPrefix + '/upload',
             data: formatData(file),
             headers: {
               'Content-Type': undefined
@@ -179,7 +190,7 @@ angular.module('blogApp.services', ['ngResource'])
         var defer = $q.defer();
         $http({
             method: 'POST',
-            url: Globals.apiUrl + 'login',
+            url: Globals.apiPrefix + '/login',
             data: user
           })
           .success(function (data, status, headers, config) {
@@ -196,7 +207,7 @@ angular.module('blogApp.services', ['ngResource'])
         var defer = $q.defer();
         $http({
             method: 'GET',
-            url: Globals.apiUrl + 'logout'
+            url: Globals.apiPrefix + '/logout'
           })
           .success(function (data, status, headers, config) {
             defer.resolve(data);

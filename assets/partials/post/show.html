@@ -25,7 +25,7 @@
       </div>
       <div class="column right aligned">
         <div ng-show="isAuthenticated" class="ui icon buttons">
-          <a href="/post/update/{{ post.id }}" class="ui small black button"><i class="icon pencil"></i></a>
+          <a href="/post/{{ post.id }}/edit" class="ui small black button"><i class="icon pencil"></i></a>
           <div ng-click="destroyPost()" class="ui small black button"><i class="icon trash"></i></div>
         </div>
       </div>

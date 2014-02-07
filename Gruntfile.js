@@ -60,6 +60,11 @@ module.exports = function (grunt) {
     'linker/js/app/services.js',
     'linker/js/app/filters.js',
     'linker/js/app/directives.js',
+    'linker/js/app/controllers/AuthCtrl.js',
+    'linker/js/app/controllers/NavCtrl.js',
+    'linker/js/app/controllers/PostIndexCtrl.js',
+    'linker/js/app/controllers/PostShowCtrl.js',
+    'linker/js/app/controllers/PostEditCtrl.js',
     'linker/js/app/controllers.js'
 
     // // Below, as a demonstration, you'll see the built-in dependencies

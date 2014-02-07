@@ -5,14 +5,35 @@
 var PostController = {
 
   index: function (req,res) {
-    var page = req.param('page') || 1,
-        postsPerPage = 10;
 
-    Post.find().done(function (err, posts) {
+    var page = req.param('page') || 1,
+        postsPerPage = 10,
+        opts = {};
+
+    if (req.param('query')) {
+      opts = { or: [] };
+
+      var query = req.param('query').split(' ');
+      _.each(query, function (q) {
+        opts.or.push({
+          title: {
+            contains: q
+          }
+        });
+
+        opts.or.push({
+          content: {
+            contains: q
+          }
+        });
+      });
+    }
+
+    Post.find(opts).done(function (err, posts) {
       if (err) return res.send(err, 500);
       var totalPosts = posts.length;
 
-      Post.find()
+      Post.find(opts)
         .sort('createdAt DESC')
         .paginate({page: page, limit: postsPerPage})
         .done(function (err, posts) {
@@ -44,46 +65,8 @@ var PostController = {
   //   });
   // },
 
-  search: function (req,res) {
-    var page = req.param('page') || 1,
-        query = req.param('query') || '',
-        postsPerPage = 2,
-        opts = { or: [] };
-
-    query = query.split(' ');
-    _.each(query, function (q) {
-      opts.or.push({
-        title: {
-          contains: q
-        }
-      });
-
-      opts.or.push({
-        content: {
-          contains: q
-        }
-      });
-    });
-
-    Post.find(opts).done(function (err, posts) {
-      if (err) return res.send(err, 500);
-      var totalPosts = posts.length;
-
-      Post.find(opts)
-        .sort('createdAt DESC')
-        .paginate({page: page, limit: postsPerPage})
-        .done(function (err, posts) {
-          res.json({
-            totalPosts: totalPosts,
-            perPage: postsPerPage,
-            currentPage: parseInt(page),
-            posts: posts
-          })
-        });
-    });
-  },
-
   show: function (req, res) {
+    console.log('post', req.param('id'));
     var id = req.param('id');
     Post.findOne(id).done(function (err, post) {
       if (err) return res.send(err, 500);

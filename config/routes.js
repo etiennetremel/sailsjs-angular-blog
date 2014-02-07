@@ -18,12 +18,11 @@ module.exports.routes = {
   'get /api/logout'                     : 'AuthController.logout',
 
   // Posts
-  'get /api/posts/:page?'               : 'PostController.index',
-  'get /api/posts/search/:query/:page?' : 'PostController.search',
-  'get /api/post/:id?'                  : 'PostController.show',
-  'post /api/post'                      : 'PostController.create',
-  'put /api/post/:id'                   : 'PostController.update',
-  'delete /api/post/:id'                : 'PostController.destroy',
+  'get /api/posts'                      : 'PostController.index',
+  'get /api/posts/:id'                  : 'PostController.show',
+  'post /api/posts'                     : 'PostController.create',
+  'put /api/posts/:id'                  : 'PostController.update',
+  'delete /api/posts/:id'               : 'PostController.destroy',
 
   // Upload
   'post /api/upload'                    : 'UploadController.index'

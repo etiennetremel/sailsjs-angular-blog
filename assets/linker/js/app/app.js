@@ -37,7 +37,7 @@ var resolve = {
 // Initialize application
 // ---------------------------
 
-angular.module('blogApp', [
+var app = angular.module('blogApp', [
 
     // Angular dependencies
     'ngRoute',
@@ -58,7 +58,7 @@ angular.module('blogApp', [
 
   // Set global variables
   .constant('Globals', {
-    apiUrl: '/api/',
+    apiPrefix: '/api',
     csrfToken: null
   })
 
@@ -68,38 +68,34 @@ angular.module('blogApp', [
     $routeProvider
       .when('/', {
         templateUrl: 'partials/post/index.html',
-        controller: 'IndexCtrl',
-        // needAuthentication: false,
+        controller: 'PostIndexCtrl',
         resolve: resolve
       })
       .when('/page/:page', {
         templateUrl: '/partials/post/index.html',
-        controller: 'IndexCtrl',
-        // needAuthentication: false,
+        controller: 'PostIndexCtrl',
         resolve: resolve
       })
       .when('/post/create', {
         templateUrl: '/partials/post/form.html',
-        controller: 'CreatePostCtrl',
+        controller: 'PostEditCtrl',
         needAuthentication: true,
         resolve: resolve
       })
-      .when('/post/update/:id', {
+      .when('/post/:id/edit', {
         templateUrl: '/partials/post/form.html',
-        controller: 'UpdatePostCtrl',
+        controller: 'PostEditCtrl',
         needAuthentication: true,
         resolve: resolve
       })
       .when('/search/:query', {
         templateUrl: '/partials/post/index.html',
-        controller: 'SearchCtrl',
-        // needAuthentication: false,
+        controller: 'PostIndexCtrl',
         resolve: resolve
       })
       .when('/:slug/:id', {
         templateUrl: '/partials/post/show.html',
-        controller: 'ShowPostCtrl',
-        // needAuthentication: false,
+        controller: 'PostShowCtrl',
         resolve: resolve
       })
       .otherwise({
