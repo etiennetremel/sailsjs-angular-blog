@@ -1,7 +1,7 @@
 {
     "name": "sails-angular-blog",
     "private": true,
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Blog built with SailsJS, Angular and Mongo DB",
     "dependencies": {
         "sails": "0.9.8",
