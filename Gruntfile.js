@@ -51,7 +51,6 @@ module.exports = function (grunt) {
     'linker/js/lib/angular/angular.min.js',
     'linker/js/lib/angular/angular-route.min.js',
     'linker/js/lib/angular/angular-resource.min.js',
-    'linker/js/lib/angular/angular-cookies.min.js',
     'linker/js/lib/angular/angular-sanitize.min.js',
     'linker/js/lib/angular/angular-growl.js',
     'linker/js/lib/angular/ng-tags-input.js',

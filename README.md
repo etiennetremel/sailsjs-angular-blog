@@ -3,7 +3,7 @@
 
 ### Installation
 ```sh
-$ git clone https://github.com/etiennetremel/sailsjs-angular-blog.git`
+$ git clone https://github.com/etiennetremel/sailsjs-angular-blog.git
 $ cd sailsjs-angular-blog
 $ npm install
 ```
