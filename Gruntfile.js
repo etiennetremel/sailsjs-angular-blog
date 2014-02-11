@@ -29,7 +29,9 @@ module.exports = function (grunt) {
    */
 
   var cssFilesToInject = [
-    'linker/**/*.css'
+    'linker/bower_components/semantic/build/packaged/css/semantic.css',
+    'linker/bower_components/angular-growl/build/angular-growl.min.js',
+    'linker/styles/*.css'
   ];
 
 
@@ -42,45 +44,18 @@ module.exports = function (grunt) {
    */
 
   var jsFilesToInject = [
-    'linker/js/lib/jquery-1.11.0.min.js',
-    'linker/js/lib/semantic.min.js',
-    'linker/js/lib/showdown.js',
-    'linker/js/lib/jquery.truncate.js',
-    'linker/js/lib/moment.min.js',
-
-    'linker/js/lib/angular/angular.min.js',
-    'linker/js/lib/angular/angular-route.min.js',
-    'linker/js/lib/angular/angular-resource.min.js',
-    'linker/js/lib/angular/angular-sanitize.min.js',
-    'linker/js/lib/angular/angular-growl.js',
-    'linker/js/lib/angular/ng-tags-input.js',
-
-    'linker/js/app/app.js',
-    'linker/js/app/services.js',
-    'linker/js/app/filters.js',
-    'linker/js/app/directives.js',
-    'linker/js/app/controllers/AuthCtrl.js',
-    'linker/js/app/controllers/NavCtrl.js',
-    'linker/js/app/controllers/PostIndexCtrl.js',
-    'linker/js/app/controllers/PostShowCtrl.js',
-    'linker/js/app/controllers/PostEditCtrl.js',
-    'linker/js/app/controllers.js'
-
-    // // Below, as a demonstration, you'll see the built-in dependencies
-    // // linked in the proper order order
-
-    // // Bring in the socket.io client
-    // 'linker/js/socket.io.js',
-
-    // // then beef it up with some convenience logic for talking to Sails.js
-    // 'linker/js/sails.io.js',
-
-    // // A simpler boilerplate library for getting you up and running w/ an
-    // // automatic listener for incoming messages from Socket.io.
-    // 'linker/js/app.js',
-
-    // All of the rest of your app scripts imported here
-    // 'linker/**/*.js'
+    'linker/bower_components/jquery/jquery.js',
+    'linker/bower_components/angular/angular.js',
+    'linker/bower_components/angular-route/angular-route.js',
+    'linker/bower_components/angular-resource/angular-resource.js',
+    'linker/bower_components/angular-sanitize/angular-sanitize.js',
+    'linker/bower_components/angular-growl/build/angular-growl.js',
+    'linker/bower_components/ng-tags-input/ng-tags-input.js',
+    'linker/bower_components/moment/moment.js',
+    'linker/bower_components/semantic/build/packaged/javascript/semantic.js',
+    'linker/bower_components/showdown/src/showdown.js',
+    'linker/bower_components/truncate/jquery.truncate.js',
+    'linker/app/**/*.js'
   ];
 
 
@@ -95,7 +70,7 @@ module.exports = function (grunt) {
    */
 
   var templateFilesToInject = [
-    'linker/**/*.html'
+    // 'linker/**/*.html'
   ];
 
 

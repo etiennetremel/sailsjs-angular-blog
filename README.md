@@ -8,8 +8,28 @@ $ cd sailsjs-angular-blog
 $ npm install
 ```
 
-Configure AWS `/config/aws.js` and MongoDB `/config/adapters.js`.
+Then you will have to install bower dependencies:
+If you are not familiar with Bower, please check this [documentation](http://bower.io/).
+Make sure bower is installed globally, if not do:
 
+```sh
+$ npm install -g bower
+```
+
+...and install all the dependencies:
+
+```sh
+$ bower install
+```
+
+*Almost finish...*
+Configure Amazon Web Services to store all the picture: `/config/aws.js`
+
+Then configure MongoDB `/config/adapters.js`
+
+If you prefer, use the local configuration file `/config/local.js` to store all these informations (documentation available [here](http://sailsjs.org/#!documentation/config.local))
+
+And, lift sails:
 
 ```sh
 $ sails lift
@@ -20,6 +40,14 @@ Visit [http://localhost:1337/](http://localhost:1337/)
 **Admin access:**
 * Username: `admin`
 * Password: `admin`
+
+
+###Auto-reload server on file change
+`/!\` Not to be used in production
+Make sure you have Nodemon installed: `npm install -g nodemon`
+Then instead of typing `sails lift` type `nodemon -w . app.js`
+The server will be automatically reloaded on file change.
+
 
 ### Features
 * Authentification using Passport
@@ -61,6 +89,7 @@ adapters: {
   }
 }
 ```
+
 
 ### Specific customisation
 
