@@ -9,9 +9,9 @@ angular.module('blogApp.services', ['ngResource'])
 
   .factory('Post', ['$resource', 'Globals', function ($resource, Globals) {
     return $resource(Globals.apiPrefix + '/posts/:id', { id: "@_id" }, {
-      'create':  { method: 'POST' },
       'index':   { method: 'GET', params: { page: 'page' } },
       'show':    { method: 'GET' },
+      'create':  { method: 'POST' },
       'update':  { method: 'PUT' },
       'destroy': { method: 'DELETE' },
       'search':  { method: 'GET', action: 'search', params: { query: 'query', page: 'page' } }
@@ -76,7 +76,7 @@ angular.module('blogApp.services', ['ngResource'])
         var defer = $q.defer();
         $http({
             method: 'POST',
-            url: Globals.apiPrefix + '/login',
+            url: Globals.apiPrefix + '/users/login',
             data: user
           })
           .success(function (data, status, headers, config) {
@@ -93,7 +93,7 @@ angular.module('blogApp.services', ['ngResource'])
         var defer = $q.defer();
         $http({
             method: 'GET',
-            url: Globals.apiPrefix + '/logout'
+            url: Globals.apiPrefix + '/users/logout'
           })
           .success(function (data, status, headers, config) {
             defer.resolve(data);

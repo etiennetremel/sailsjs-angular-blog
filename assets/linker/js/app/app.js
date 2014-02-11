@@ -109,7 +109,16 @@ var app = angular.module('blogApp', [
     growlProvider.globalEnableHtml(true);
   }])
 
-  // Set default user status
-  .run(['$rootScope', function ($rootScope) {
+  // Define if user logged in and set status
+  .run(['$rootScope', '$http', '$cookies', 'Globals', function ($rootScope, $http, $cookies, Globals) {
     $rootScope.isAuthenticated = false;
+    $http
+      .get(Globals.apiPrefix + '/users/me')
+      .success(function (user) {
+        $rootScope.user = user;
+        $rootScope.isAuthenticated = true;
+      })
+      .error(function (err) {
+        $rootScope.isAuthenticated = false;
+      });
   }]);
