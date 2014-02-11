@@ -11,10 +11,7 @@
 module.exports.bootstrap = function (cb) {
 
   User.findOne({username: 'admin'}).done(function (err, user) {
-    if (user) {
-      console.log('Default user already existing');
-    } else {
-
+    if (!user) {
       // Create user if not in DB
       User.create({
         uid: 1,
@@ -24,11 +21,7 @@ module.exports.bootstrap = function (cb) {
         password: 'admin',
         email: 'admin@example.com'
       }).done(function(err, user) {
-        if (err) {
-          return console.log(err);
-        } else {
-          console.log("User created:", user);
-        }
+        if (err) return console.log(err);
       });
     }
   });
