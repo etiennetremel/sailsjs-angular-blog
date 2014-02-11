@@ -1,0 +1,30 @@
+{
+  "name": "sailsjs-angular-blog",
+  "version": "0.1.1",
+  "homepage": "https://github.com/etiennetremel/sailsjs-angular-blog",
+  "authors": [
+    "etiennetremel <etienne.tremel@orange.fr>"
+  ],
+  "description": "Assets for SailsJS Angular Blog",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.12",
+    "jquery": "~2.1.0",
+    "moment": "~2.5.1",
+    "semantic": "~0.12.4",
+    "showdown": "~0.3.1",
+    "angular-growl": "~0.4.0",
+    "ng-tags-input": "~1.1.1",
+    "truncate": "https://github.com/pathable/truncate.git",
+    "angular-route": "~1.2.12",
+    "angular-resource": "~1.2.12",
+    "angular-sanitize": "~1.2.12"
+  }
+}
