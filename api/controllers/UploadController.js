@@ -27,10 +27,10 @@ var UploadController = {
     // Store image into aws bucket
     s3.putObject(params, function(err, data) {
       if (err) {
-        res.json(err, 400);
+        res.serverError(err);
       } else {
         // Return link to the image
-        res.json({
+        res.send({
           url: 'https://' + sails.config.aws.endPoint + '/' + sails.config.aws.bucket + '/' + req.files.file.originalFilename
         });
       }

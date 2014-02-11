@@ -5,11 +5,11 @@
 var PostController = {
 
   index: function (req,res) {
-
     var page = req.param('page') || 1,
         postsPerPage = 10,
         opts = {};
 
+    // If search
     if (req.param('query')) {
       opts = { or: [] };
 
@@ -30,14 +30,14 @@ var PostController = {
     }
 
     Post.find(opts).done(function (err, posts) {
-      if (err) return res.send(err, 500);
+      if (err) return res.serverError(err);
       var totalPosts = posts.length;
 
       Post.find(opts)
         .sort('createdAt DESC')
         .paginate({page: page, limit: postsPerPage})
         .done(function (err, posts) {
-          res.json({
+          res.send({
             totalPosts: totalPosts,
             perPage: postsPerPage,
             currentPage: parseInt(page),
@@ -66,11 +66,9 @@ var PostController = {
   // },
 
   show: function (req, res) {
-    console.log('post', req.param('id'));
-    var id = req.param('id');
-    Post.findOne(id).done(function (err, post) {
-      if (err) return res.send(err, 500);
-      res.json(post);
+    Post.findOne(req.param('id')).done(function (err, post) {
+      if (err) return res.serverError(err);
+      res.send(post);
     });
   },
 
@@ -82,12 +80,13 @@ var PostController = {
       tags: req.param('tags'),
       categories: req.param('categories')
     }).done(function(err, post) {
-      if (err) return res.send(err, 500);
-      res.json(post);
+      if (err) return res.serverError(err);
+      res.send(post);
     });
   },
 
   update: function(req, res) {
+    console.log('updating');
     Post.update({
       id: req.param('id')
     },{
@@ -97,15 +96,16 @@ var PostController = {
       tags: req.param('tags'),
       categories: req.param('categories')
     }, function(err, post) {
-      if (err) return res.send(err, 500);
-      res.json(post);
+      console.log(err);
+      if (err) res.serverError(err);
+      res.send(post);
     });
   },
 
   destroy: function(req, res) {
     Post.destroy(req.param('id')).done(function(err) {
-      if (err) return res.send(err, 500);
-      res.json({});
+      if (err) return res.serverError(err);
+      res.send({});
     });
   }
 };
