@@ -14,8 +14,9 @@ module.exports.routes = {
   '/'                                   : 'views/layout.ejs',
 
   // Auth
-  'post /api/login'                     : 'AuthController.login',
-  'get /api/logout'                     : 'AuthController.logout',
+  'get /api/users/me'                   : 'UserController.me',
+  'post /api/users/login'               : 'UserController.login',
+  'get /api/users/logout'               : 'UserController.logout',
 
   // Posts
   'get /api/posts'                      : 'PostController.index',
