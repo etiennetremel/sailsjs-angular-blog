@@ -44,7 +44,7 @@ module.exports = function (grunt) {
    */
 
   var jsFilesToInject = [
-    'linker/bower_components/jquery/jquery.js',
+    'linker/bower_components/jquery/dist/jquery.js',
     'linker/bower_components/angular/angular.js',
     'linker/bower_components/angular-route/angular-route.js',
     'linker/bower_components/angular-resource/angular-resource.js',
